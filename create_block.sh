@@ -25,6 +25,12 @@ done
 c=696969
 n=17835
 
+if [ -f "/tmp/CustomGenesis.json" ]; then
+	echo "Genesis file already exists! Do you want to remove it?"
+        select yn in "Yes" "No"; do
+        case $yn in
+            Yes ) rm /tmp/CustomGenesis.json
+            No ) exit;;
 
 while true; do
     read -p "Genesis file already exists! Do you want to remove it?" yn
@@ -37,7 +43,7 @@ done
 
 
 
-else
+
 cat <<EOF > /tmp/CustomGenesis.json
 {
     "config": {
