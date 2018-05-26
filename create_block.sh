@@ -37,12 +37,9 @@ while true; do
     case $yn in
         [Yy]* ) rm /tmp/CustomGenesis.json; break;;
         [Nn]* ) exit;;
-        * ) echo "Yes or no?";;
+        * ) echo "Yes or no.";;
     esac
 done
-
-
-
 
 cat <<EOF > /tmp/CustomGenesis.json
 {
