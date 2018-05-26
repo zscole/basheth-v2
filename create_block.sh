@@ -25,12 +25,13 @@ done
 c=696969
 n=17835
 
-while true; do
-    read -p "Genesis file already exists! Do you want to remove it?" yn
-    case $yn in
-        [Yy]* ) rm /tmp/CustomGenesis.json; break;;
-        [Nn]* ) exit;;
-        * ) echo "Yes or no.";;
+if [ -f "/tmp/CustomGenesis.json" ]; then
+	while true; do
+        read -p "Genesis file already exists! Do you want to remove it?" yn
+        case $yn in
+            [Yy]* ) rm /tmp/CustomGenesis.json; break;;
+            [Nn]* ) exit;;
+            * ) echo "Yes or no.";;
     esac
 done
 
