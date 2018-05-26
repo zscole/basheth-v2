@@ -66,6 +66,8 @@ mkdir /home/appo/node$i
 gubiq --datadir /home/appo/node$i init /tmp/CustomGenesis.json
 
 # Create a new account/wallet
+
+echo second >> passwd.file
 gubiq --password passwd.file account new >> /home/appo/node$i/wallet
 
 # Get the enode from console and drop out of console
