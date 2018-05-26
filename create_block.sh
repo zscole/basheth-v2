@@ -100,7 +100,7 @@ sed -i '$s/\",/\"/g' /tmp/static-nodes.json
 echo "]" >> /tmp/static-nodes.json
 
 # Copy static nodes to each node directory
-j=1
+one=1
 
 while [ "$j" -le "$count" ]; do
 cp /tmp/static-nodes.json /home/appo/node$j
