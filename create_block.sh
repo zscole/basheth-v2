@@ -49,7 +49,7 @@ EOF
 
 fi
 
-
+rm /tmp/static-nodes.json
 
 for i in {1..3}; do
 
@@ -76,7 +76,6 @@ enode=`cat /tmp/node$i.output | grep enode | awk '{print $5}'| sed "s/\[::\]/$no
 echo $enode >> /home/appo/node$i/enode
 
 # Create the static nodes file
-rm /tmp/static-nodes.json
 
 if [ -f "/tmp/static-nodes.json" ]; then
 ## ------------------------------------#
@@ -99,10 +98,10 @@ sed -i '$s/\",/\"/g' /tmp/static-nodes.json
 echo "]" >> /tmp/static-nodes.json
 
 # Copy static nodes to each node directory
-one=1
+j=1
 
-while [ "$one" -le "$count" ]; do
-cp /tmp/static-nodes.json /home/appo/node$one
+while [ "$j" -le "$count" ]; do
+cp /tmp/static-nodes.json /home/appo/node$j
 (( one++ ))
 done
 
