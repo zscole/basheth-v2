@@ -116,9 +116,9 @@ done
 # done
 
 # Copy datadir to each peer node
-for i in {1..3}; do
-count=$i
-scp -r /home/appo/node$i appo@node$i:/home/appo
+for e in {1..3}; do
+count=$e
+scp -r /home/appo/node$e appo@node$e:/home/appo
 done
 
 expect "appo@node1's password:"
