@@ -8,6 +8,9 @@ EOM
     exit 1
 }
 
+c=696969
+n=17835
+
 while getopts ":c:n:h" optKey; do
     case $optKey in
         c)
@@ -22,8 +25,6 @@ while getopts ":c:n:h" optKey; do
     esac
 done
 
-c=696969
-n=17835
 
 if [ -f "/tmp/CustomGenesis.json" ]; then
 	while true; do
