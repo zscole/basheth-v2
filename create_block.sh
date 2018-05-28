@@ -97,7 +97,7 @@ fi
 
 done
 
-# Close static nodes file
+# Stop editing static nodes file
 sed -i '$s/\",/\"/g' /tmp/static-nodes.json
 echo "]" >> /tmp/static-nodes.json
 
@@ -122,10 +122,10 @@ scp -r /home/appo/node$i appo@node$i:/home/appo
 done
 
 expect "appo@node1's password:"
-send "w@ntest"
+send -- "w@ntest"
 expect "appo@node2's password:"
-send "w@ntest"
+send -- "w@ntest"
 expect "appo@node3's password:"
-send "w@ntest"
+send -- "w@ntest"
 
 
