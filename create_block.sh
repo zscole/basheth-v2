@@ -110,10 +110,10 @@ cp /tmp/static-nodes.json /home/appo/node$one
 done
 
 # allow ssh 
-for i in {1..3}; do
-count=$i
-ssh-copy-id node$i 
-done
+# for i in {1..3}; do
+# count=$i
+# ssh-copy-id node$i 
+# done
 
 # Copy datadir to each peer node
 for i in {1..3}; do
