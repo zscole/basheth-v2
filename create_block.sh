@@ -54,30 +54,29 @@ fi
 rm /tmp/static-nodes.json
 
 for i in {1..3}; do
+    count=$i
+    # set the ip address for the enode
+    nodeIP=10.$i.100.100
 
-count=$i
-# set the ip address for the enode
-nodeIP=10.$i.100.100
+    # Create the node directory
+    mkdir /home/appo/node$i
 
-# Create the node directory
-mkdir /home/appo/node$i
+    # Load the CustomeGenesis file
+    gubiq --datadir /home/appo/node$i init /tmp/CustomGenesis.json
 
-# Load the CustomeGenesis file
-gubiq --datadir /home/appo/node$i init /tmp/CustomGenesis.json
+    # Create a new account/wallet
 
-# Create a new account/wallet
+    echo second >> passwd.file
+    gubiq --password passwd.file account new >> /home/appo/node$i/wallet
 
-echo second >> passwd.file
-gubiq --password passwd.file account new >> /home/appo/node$i/wallet
+    # Get the enode from console and drop out of console
+    gubiq --rpc --datadir /home/appo/node$i/ --networkid $n console >& /tmp/node$i.output
 
-# Get the enode from console and drop out of console
-gubiq --rpc --datadir /home/appo/node$i/ --networkid $n console >& /tmp/node$i.output
-
-# Inject the IP Adress into the enode string
-enode=`cat /tmp/node$i.output | grep enode | awk '{print $5}'| sed "s/\[::\]/$nodeIP/g"`
+    # Inject the IP Adress into the enode string
+    enode=`cat /tmp/node$i.output | grep enode | awk '{print $5}'| sed "s/\[::\]/$nodeIP/g"`
 
 # Write the enode info to the node directory
-echo $enode >> /home/appo/node$i/enode
+    echo $enode >> /home/appo/node$i/enode
 
 # Create the static nodes file
 
@@ -118,7 +117,7 @@ done
 # Copy datadir to each peer node
 for i in {1..3}; do
 count=$i
-scp -r /home/appo/node$i node$i:/home/appo
+scp -r appo@node$1:/home/appo/node$i /home/appo
 done
 
 expect "appo@node1's password:"
@@ -127,17 +126,5 @@ expect "appo@node2's password:"
 send "w@ntest"
 expect "appo@node3's password:"
 send "w@ntest"
-done
-
-
-
-
-
-
-
-
-
-
-
 
 
