@@ -103,8 +103,8 @@ echo "]" >> /tmp/static-nodes.json
 # Copy static nodes to each node directory
 one=1
 
-while [ "$j" -le "$count" ]; do
-cp /tmp/static-nodes.json /home/appo/node$j
+while [ "$one" -le "$count" ]; do
+cp /tmp/static-nodes.json /home/appo/node$one
 (( one++ ))
 done
 
