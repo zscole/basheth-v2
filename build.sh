@@ -146,7 +146,7 @@ do
   expect_password "ssh -t -o StrictHostKeyChecking=no node$e tmux send-keys -t whiteblock 'gubiq\ --datadir\ /home/appo/node$e\ --networkid\ 17835\ --rpc\ console' C-m"
 
   # Edit the app.json file for Netstats
-  expect_password "ssh -t -o StrictHostKeyChecking=no node$e sed -i 's/\"INSTANCE_NAME\".*/\"INSTANCE_NAME\"\\t\:\ \"node$e\",/g'\ $(find\ ./\ -type\ d\ -name\ ubiq-net-intelligence-api)/app.json"
+  expect_password "ssh -t -o StrictHostKeyChecking=no node$e sed -i 's/\"INSTANCE_NAME\".*/\"INSTANCE_NAME\"\\t\:\ \"node$e\",/g'\ $(find\ ./\ -type\ d\ -name\ /ubiq-net-intelligence-api)/app.json"
   expect_password "ssh -t -o StrictHostKeyChecking=no node$e \"sed -i 's/\\\"WS_SERVER\\\".*/\\\"WS_SERVER\\\"\: \\\"http:\/\/192.168.168.231\:3000\\\",/g' $(find ./ -type d -name ubiq-net-intelligence-api)/app.json\""
   #Change the WS SERVER in app.json on all nodes
   #expect_password "ssh -t -o StrictHostKeyChecking=no node$e sed -i 's/\"WS_SERVER\".*/\"WS_SERVER\"\t\:\ \"http:\/\/192.168.168.231\:3000\",/g'\ $(find\ ./\ -type\ d\ -name\ ubiq-net-intelligence-api)/app.json"
