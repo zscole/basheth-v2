@@ -1,3 +1,6 @@
+#!/bin/bash
+
+
 while [ $e -le $N ]
 do
         function expect_password {
