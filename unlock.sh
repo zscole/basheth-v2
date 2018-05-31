@@ -1,12 +1,23 @@
 #!/bin/bash
 
-# if gubiq is already running, kill it
-ps -ef | grep gubiq | grep -v grep | awk '{print $2}' | xargs kill
+#loop to provide node variable function
+while [ $e -le $N ]
+do
+        function expect_password {
+        expect -c "\
+         set timeout 90
+         set env(TERM)
+         spawn $1
+         expect \"*password:\"
+         send \"w@ntest\r\"
+        expect eof
+        "
+        }
 
-# start gubiq and unlock wallet address
-f=$(echo /home/appo/node*)
-n=`echo $f | cut -c 12-17`
-w=$(sed 's/^[^{]*{\([^{}]*\)}.*/\1/' /home/appo/node*/wallet)
-gubiq --datadir /home/appo/$n --networkid 17835 --rpc --unlock $w --password /home/appo/$n/passwd.file --rpc console
+#ssh into node and start gubiq for auto mining
+expect_password 'ssh -t -o StrictHostKeyChecking=no node$e tmux send-keys -t whiteblock 'miner.start()'
+
+tmux send-keys -t whiteblock 'miner.start()
+
 
 exit

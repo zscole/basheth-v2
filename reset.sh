@@ -1,5 +1,6 @@
 #!/bin/bash
 
+e=1
 
 while [ $e -le $N ]
 do
