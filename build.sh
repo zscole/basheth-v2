@@ -41,7 +41,7 @@ cat <<EOF > /tmp/CustomGenesis.json
         "eip158Block": 0
     },
     "difficulty": "0x0400",
-    "gasLimit": "0x2100000",
+    "gasLimit": "7A1200",
     "alloc": {}
 }
 EOF
