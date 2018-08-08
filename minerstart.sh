@@ -1,6 +1,15 @@
 #!/bin/bash
+e=1
 
-#loop to provide node variable function
+while getopts "N:" optKey; do
+	case $optKey in
+		
+		N)
+			N=$OPTARG
+			;;
+	esac
+done
+
 while [ $e -le $N ]
 do
         function expect_password {
@@ -13,11 +22,7 @@ do
         expect eof
         "
         }
+    expect_password "ssh -t -o StrictHostKeyChecking=no node$e tmux send-keys -t whiteblock 'miner.start()' C-m"
 
-#ssh into node and start gubiq for auto mining
-expect_password 'ssh -t -o StrictHostKeyChecking=no node$e tmux send-keys -t whiteblock 'miner.start()'
-
-tmux send-keys -t whiteblock 'miner.start()
-
-
-exit
+(( e++ ))
+done

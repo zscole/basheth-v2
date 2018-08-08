@@ -132,7 +132,7 @@ do
          set env(TERM)
          spawn $1
          expect \"*password:\"
-         send \"w@ntest\r\"
+         send \"magicword\r\"
         expect eof
         "
         }

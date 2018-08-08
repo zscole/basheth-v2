@@ -122,10 +122,10 @@ scp -r /home/appo/node$e appo@node$e:/home/appo
 done
 
 expect "appo@node1's password:"
-send -- "w@ntest"
+send -- "magicword"
 expect "appo@node2's password:"
-send -- "w@ntest"
+send -- "magicword"
 expect "appo@node3's password:"
-send -- "w@ntest"
+send -- "magicword"
 
 
